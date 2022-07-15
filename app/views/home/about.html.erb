@@ -1,0 +1,9 @@
+<h1>このアプリはPOTEPAN CAMPの課題として作成されています。</h1>
+<% @tests.each do |test| %>
+    <ul>
+        <li>
+            <%= test.name %>
+            <%= test.content %>
+        </li>
+    </ul>
+<% end %>

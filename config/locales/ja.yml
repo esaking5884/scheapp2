@@ -1,0 +1,5 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      all_days: "%Y/%m/%d 終日"

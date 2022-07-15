@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Scheapp2</title>
+    <title>Scheapp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,29 @@
   </head>
 
   <body>
+    <div class = "header">
+      <%= link_to("ScheApp", "/") %>
+      <div class="linkContainer">
+        <ul class = "linkList">
+          <li class = "linkListElm">
+            <%= link_to("予定一覧","/schdl/index") %>
+          </li>
+          <li class = "linkListElm">
+            <%= link_to("ABOUT","/home/about") %>
+          </li>
+          <li class = "linkListElm">
+            <%= link_to("新規作成","/schdl/new") %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <%= yield %>
+
+    <p class = "footer">
+      
+        <%= @footer_content %>
+      
+    </p>
   </body>
 </html>
