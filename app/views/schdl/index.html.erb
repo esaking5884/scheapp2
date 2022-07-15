@@ -1,0 +1,41 @@
+<h1>予定一覧</h1>
+
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+    <tr>
+        <th>タイトル</th>
+        <th>開始時刻</th>
+        <th>終了時刻</th>
+        <th>参照・編集・削除</th>
+    </tr>
+
+
+    <% @schs.each do |sche| %>
+        <tr>
+            <td><%= sche.title %></td>
+            <td>
+                <% if sche.all_days %>
+                    <%= l sche.start_time, format: :all_days %>
+                <% else %>
+                    <%= l sche.start_time %>
+                <% end %>
+            </td>
+            <td>
+                <% if sche.all_days %>
+                    <%= l sche.finish_time, format: :all_days %>
+                <% else %>
+                    <%= l sche.finish_time %>
+                <% end %>
+            </td>
+            
+            <td><%= link_to "参照", "/schdl/#{sche.id}" %>
+            ｜<%= link_to "編集", "/schdl/#{sche.id}/edit" %>
+            ｜<%= link_to "削除", "/schdl/#{sche.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    <% footer_content = "次の予定は#{@schs[0].title}です" %>
+
+</table>

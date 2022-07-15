@@ -1,0 +1,29 @@
+<h1>参照</h1>
+<table>
+    <tr>
+        <th>タイトル</th>
+        <td><%= @sche.title %></td>
+        <th>特記事項</th>
+        <td><%= @sche.memo %></td>
+    </tr>
+    <tr>
+        <% if @sche.all_days == false %>
+            <th>開始日時</th>
+            <td><%= l @sche.start_time %></td>
+            <th>終了日時</th>
+            <td><%= l @sche.finish_time %></td>
+        <% else %>
+            <th>開始日時</th>
+            <td><%= l @sche.start_time, format: :all_days %></td>
+            <th>終了日時</th>
+            <td><%= l @sche.finish_time, format: :all_days %></td>
+        <% end %>
+    </tr>
+</table>
+<div>
+    <span>作成日時:<%= l @sche.created_at %></span>
+    <span>更新日時:<%= l @sche.updated_at %></span>
+</div>
+<p><%= link_to "編集", "/schdl/#{@sche.id}/edit" %>
+｜<%= link_to "削除", "/schdl/#{@sche.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+｜<%= link_to "一覧に戻る", "/schdl/index" %></p>

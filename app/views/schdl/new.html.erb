@@ -1,0 +1,33 @@
+<h1>新規スケジュール</h1>
+<% @sche.errors.full_messages.each do |m| %>
+    <h3>
+        <%= m %>
+    </h3>
+<% end %>
+<%= form_with model: @sche, url: "/schdl/create", local: true do |f| %>
+    <table>
+        <tr>
+            <td><%= f.label :title, "タイトル" %></td>
+            <td><%= f.text_field :title %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :start_time, "開始日時" %></td>
+            <td><%= f.datetime_field :start_time %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :finish_time, "終了日時" %></td>
+            <td><%= f.datetime_field :finish_time %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :memo, "特記事項" %></td>
+            <td><%= f.text_area :memo %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :all_days, "終日" %></td>
+            <td><%= f.check_box :all_days %></td>
+        </tr>
+        <tr>
+            <td><%= f.submit "登録完了する" %></td>
+        </tr>
+    </table>
+<% end %>
