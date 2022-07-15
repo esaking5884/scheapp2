@@ -36,6 +36,6 @@
             ｜<%= link_to "削除", "/schdl/#{sche.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
-    <% footer_content = "次の予定は#{@schs[0].title}です" %>
+    <% @footer_content %>
 
 </table>

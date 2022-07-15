@@ -1,7 +1,11 @@
 class SchdlController < ApplicationController
   def index
     @schs = Schedule.all.order(start_time: :asc)
-    @footer_content = "次の予定は#{@schs[0].title}です。"
+    if @schs ==[]
+      @footer_content = "予定がありません"
+    else
+      @footer_content = "次の予定は#{@schs[0].title}です。"
+    end
   end
 
   def new
@@ -29,7 +33,7 @@ class SchdlController < ApplicationController
   def update
     @sche = Schedule.find(params[:id])
     if @sche.update(params.require(:schedule).permit(:title, :start_time, :finish_time, :memo, :all_days))
-      lash[:notice] = "編集しました"
+      flash[:notice] = "編集しました"
       redirect_to "/schdl/index"
     else
       render("schdl/edit")
